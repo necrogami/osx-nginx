@@ -238,7 +238,7 @@ Great thanks to [@frdmn][3] who inspired me to write my own guide.
 
 [back to topics][0]
 
-[0]: #install-php--nginx--mysql-on-macos
+[0]: #install-php--nginxsslhttp2--mysql-on-macos
 [1]: https://developer.apple.com/downloads
 [2]: https://itunes.apple.com/us/app/xcode/id497799835
 [3]: https://github.com/frdmn
