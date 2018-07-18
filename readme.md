@@ -43,7 +43,7 @@ If you already had Homebrew installed, update the existing Homebrew installation
 
     $ brew update && brew upgrade
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
 ## PHP-FPM
 
@@ -64,7 +64,7 @@ You can run the service one time if needed:
 
     $ brew services run php
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
 ## MySQL
 
@@ -124,7 +124,7 @@ When you done, test mysql:
     $ mysql -u root -p
     > Enter you password
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
 ## Nginx
 
@@ -179,7 +179,7 @@ After finishing you should restart nginx:
 
     $ sudo brew services restart nginx
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
 ## Go
 
@@ -208,33 +208,33 @@ After finishing you should restart nginx:
 
 * `brew help` - List Brew commands
 
-* `nginx.start` - Start Nginx service
+* `sudo brew services start nginx` - Start Nginx service
 
-* `nginx.stop` - Stop Nginx service
+* `sudo brew services stop nginx` - Stop Nginx service
 
-* `nginx.restart` - Restart Nginx service
+* `sudo brew services restart nginx` - Restart Nginx service
 
-* `php-fpm.start` - Start PHP-FPM service
+* `brew services start php` - Start PHP-FPM service
 
-* `php-fpm.stop` - Stop PHP-FPM service
+* `brew services stop php` - Stop PHP-FPM service
 
-* `php-fpm.restart` - Restart PHP-FPM service
+* `brew services restart php` - Restart PHP-FPM service
 
-* `mysql.start` - Start MySQL server
+* `brew services start mysql@5.7` - Start MySQL server
 
-* `mysql.stop` - Stop MySQL server
+* `brew services stop mysql@5.7` - Stop MySQL server
 
-* `mysql.restart` - Retstart MySQL server
+* `brew services restart mysql@5.7` - Retstart MySQL server
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
 ## Credits
 
 Great thanks to [@frdmn][3] who inspired me to write my own guide.
 
-[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
+[back to topics][0]
 
-(#install-php--nginxsslhttp2--mysql-on-macos): #install-php--nginx--mysql-on-macos
+[0]: #install-php--nginx--mysql-on-macos
 [1]: https://developer.apple.com/downloads
 [2]: https://itunes.apple.com/us/app/xcode/id497799835
 [3]: https://github.com/frdmn
