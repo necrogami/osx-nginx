@@ -57,7 +57,7 @@ Now you can install php:
     
 Update the `$PATH` environment variable, if you want to use the PHP CLI:
 
-    $ echo 'export PATH="/usr/local/sbin:/usr/local/bin:$PATH"' >> ~/.bash_profile && source ~/.bash_profile
+    $ echo 'export PATH="/usr/local/sbin:/usr/local/bin:$PATH"c
     
 Use brew services to start or stop the php service:
 
@@ -187,7 +187,21 @@ After finishing you should restart nginx:
 
 ## Go
 
+Install GoLang from homebrew
+
+    $ brew install go
+
+You will need to setup gopath I use a folder `gocode` inside my code folder for ease of use.
+
+    $ echo 'export GOPATH=$HOME/code/gocode' >> ~/.bash_profile && source ~/.bash_profile
+    $ echo 'export PATH=$PATH:$GOPATH/bin' >> ~/.bash_profile && source ~/.bash_profile
+
+[back to topics][0]
+
 ## EasyPKI
+
+
+## Finish Configuartion
 
 
 ## More commands
