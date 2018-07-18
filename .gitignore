@@ -1,0 +1,5 @@
+*.pem
+*.key
+sites-enabled/*.conf
+!sites-enabled/redirecthttps.conf
+sites-available/dev.c4.io.conf
