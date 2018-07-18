@@ -43,7 +43,7 @@ If you already had Homebrew installed, update the existing Homebrew installation
 
     $ brew update && brew upgrade
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
 ## PHP-FPM
 
@@ -64,7 +64,7 @@ You can run the service one time if needed:
 
     $ brew services run php
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
 ## MySQL
 
@@ -124,7 +124,7 @@ When you done, test mysql:
     $ mysql -u root -p
     > Enter you password
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
 ## Nginx
 
@@ -179,7 +179,7 @@ After finishing you should restart nginx:
 
     $ sudo brew services restart nginx
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
 ## Go
 
@@ -226,15 +226,15 @@ After finishing you should restart nginx:
 
 * `mysql.restart` - Retstart MySQL server
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
 ## Credits
 
 Great thanks to [@frdmn][3] who inspired me to write my own guide.
 
-[back to topics][0]
+[back to topics](#install-php--nginxsslhttp2--mysql-on-macos)
 
-[0]: #install-php--nginx--mysql-on-macos
+(#install-php--nginxsslhttp2--mysql-on-macos): #install-php--nginx--mysql-on-macos
 [1]: https://developer.apple.com/downloads
 [2]: https://itunes.apple.com/us/app/xcode/id497799835
 [3]: https://github.com/frdmn
