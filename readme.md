@@ -164,12 +164,9 @@ I choose the first way, but it's up to you.
 
 Replace the default `nginx.conf` with my custom config from GitHubGist:
 
-    $ sudo rm /usr/local/etc/nginx/nginx.conf
-    $ curl -L https://gist.github.com/necrogami/5b1754ce1128fea13c08c07f0bc88812/raw/91b44d02734fb7ca9c65e406c7d860914373ce9b/nginx.conf -o /usr/local/etc/nginx/nginx.conf
+    $ sudo mv /usr/local/etc/nginx/nginx.conf /usr/local/etc/nginx/nginx.conf.old
+    $ curl -L https://raw.githubusercontent.com/necrogami/osx-nginx/master/nginx.conf -o /usr/local/etc/nginx/nginx.conf
 
-Also download my custom PHP-FPM config:
-
-    $ curl -L  -o /usr/local/etc/nginx/conf.d/php-fpm
     
 And the last step is to setup virtual host. 
 You could do it by your self, or you could download my custom virtual host config and setup it:
@@ -200,8 +197,60 @@ You will need to setup gopath I use a folder `gocode` inside my code folder for 
 
 ## EasyPKI
 
+EasyPKI is a library created by google to allow you to create a set of self signed SSL Certificates. This will allow you to generate a full Certificate Authority and be able to manage website SSL for all your projects.
+
+Get the CLI:
+
+    $ go get github.com/google/easypki/cmd/easypki
+
+Now you will want to setup some exports for using easypki:
+
+    $ export PKI_ROOT=~/code/pki
+    $ export PKI_ORGANIZATION="Local Inc."
+    $ export PKI_ORGANIZATIONAL_UNIT=IT
+    $ export PKI_COUNTRY=US
+    $ export PKI_LOCALITY="New York"
+    $ export PKI_PROVINCE="New York"
+
+    easypki create --expire 10950 --filename root --ca "Local Inc. Certificate Authority"
+    easypki create --expire 5475 --ca-name root --filename intermediate --intermediate "Local Inc. - Internal CA"
+    easypki create --expire 1825 --ca-name intermediate --dns "*.local.dev" "*.local.dev"
+
+    $ cat ~/code/pki/intermediate/certs/wildcard.local.dev.crt >> /usr/local/etc/nginx/ssl/wildcard.local.dev.pem
+    $ cat ~/code/pki/intermediate/certs/intermediate.crt >> /usr/local/etc/nginx/ssl/wildcard.local.dev.pem
+    $ cat ~/code/pki/root/certs/root.crt >> /usr/local/etc/nginx/ssl/wildcard.local.dev.pem
+    $ cat ~/code/pki/intermediate/keys/wildcard.local.dev.key >> /usr/local/etc/nginx/ssl/wildcard.local.dev.pem
+    $ openssl dhparam -out /usr/local/etc/nginx/ssl/dhparam.pem 4096
+
+Open `~/code/pki/root/certs/root.crt` it will ask you which you want to add it to. Add it to the system keychain.
+Provide your password.
+On the left click on system under keychains.
+You should see your `Local Inc. Certificate Authority` cert with a red x on it.
+Double click on that cert. 
+Expand Trust
+Under `When using this certificate: ` select `Always Trust`
+Close the window.
+Re-Enter your password.
+
+Now any certificate's you generate off that root certificate will be trusted by your system.
+
+
+## DNSMasq
+
+    $ brew install dnsmasq
+
+    $ echo "address=/dev/127.0.0.1" >> /usr/local/etc/dnsmasq.conf
+
+    $ sudo tee /etc/resolver/dev >/dev/null <<EOF
+      nameserver 127.0.0.1
+      EOF
+
+    $ sudo brew services start dnsmasq
+
 
 ## Finish Configuartion
+
+
 
 
 ## More commands
